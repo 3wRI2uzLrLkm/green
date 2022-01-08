@@ -292,11 +292,17 @@ footer > h1 {
   color: white;
   font-size: 15px;
   line-height: 25px;
+  transition: 200ms
 }
 .buy-button:hover {
   background-color: #0b5ed7;
   border-color: #0a58ca;
   cursor: pointer;
+  transform: translateY(2px);
+}
+
+.buy-button:active {
+  transform: translateY(5px);
 }
 
 .unselectable {
