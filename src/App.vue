@@ -117,13 +117,14 @@
 
 body {
   background: #36393e;
-  height: 12000px;
+  /* height: 12000px; */
 }
 
 footer {
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+  margin-bottom: 50px;
   width: 1130px
 }
 
