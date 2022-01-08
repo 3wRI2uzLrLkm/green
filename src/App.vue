@@ -5,7 +5,7 @@
       <h1>Донат</h1>
       <h1>Карта мира</h1>
       <h1>Правила</h1>
-      <h1>Дискорд</h1>
+      <h1>{{ aboba }}</h1>
       <h1>Online - 5/100</h1>
     </div>
   </div>
@@ -57,21 +57,23 @@
   <div class="screenshots-main">
     <h1 class="screenshots-title">А вот и скриншоты карты нашего сервера:</h1>
     <div class="screenshots-div">
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
-      <img src="./screen.png" alt="" class="screenshot" />
+      <div class="div-for-scroll">
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+        <img src="./screen.png" alt="" class="screenshot unselectable" />
+      </div>
     </div>
   </div>
 
@@ -88,10 +90,31 @@
   </div>
   <hr style="width: 70%; margin-left: auto; margin-right: auto" />
   <footer>
-    <h1>Copyright LimeProject, 2022</h1>
-    <h1>Вся информация на сайте не является публичной офретой</h1>
+    <h5>Copyright LimeProject, 2022</h5>
+    <h5>Вся информация на сайте не является публичной офретой</h5>
   </footer>
 </template>
+
+<script>
+export default {
+  name: "Main",
+  data() {
+    return {
+      iteration: 0
+  };
+  },
+  methods: {
+    transformation() {
+      this.iteration = this.iteration - 0.2
+      let div_for_scroll = document.querySelector('.div-for-scroll');
+      div_for_scroll.style.transform = `translateX(${this.iteration}px)`
+    },
+  },
+  mounted() {
+    setInterval(this.transformation, 10)
+  },
+};
+</script>
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@200;600&display=swap");
@@ -100,6 +123,9 @@
   padding: 0px;
   font-family: "Montserrat", sans-serif;
   color: #dfdfdf;
+}
+
+@keyframes scrol {
 }
 
 *::-webkit-scrollbar {
@@ -123,9 +149,9 @@ body {
 footer {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  width: 1130px
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 1130px;
 }
 
 footer > h1 {
@@ -217,9 +243,15 @@ footer > h1 {
   /* background: steelblue; */
   height: 300px;
   width: 1130px;
-  overflow-x: auto;
-  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
   padding: 15px;
+}
+
+.div-for-scroll {
+  display: flex;
+  height: 300px;
+  transform: translateX(0px);
 }
 
 .screenshot {
@@ -265,5 +297,15 @@ footer > h1 {
   background-color: #0b5ed7;
   border-color: #0a58ca;
   cursor: pointer;
+}
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 </style>
